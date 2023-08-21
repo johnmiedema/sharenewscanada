@@ -1,6 +1,22 @@
 <html>
 
 <head>
+<script type="text/javascript">
+function modifyurl(){
+	var url = document.getElementById("url").value;
+	var urlnew = url.replace("http", "h🍁ttp");
+	document.getElementById("urlnew").value = urlnew ;
+	copynew();	
+};
+
+function copynew() {
+	var copynew = document.getElementById("urlnew");
+	copynew.select();
+	copynew.setSelectionRange(0, 99999); // For mobile devices
+	navigator.clipboard.writeText(copynew.value);
+}
+
+</script>
 </head>
 
 <body>
