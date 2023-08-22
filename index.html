@@ -5,18 +5,22 @@
 <title>How to Share News on Facebook in Canada</title>
 <script type="text/javascript">
 function modifyurl(){
-	var url = document.getElementById("url").value;
-	var urlnew = url.replace("http", "h🍁ttp");
-	document.getElementById("urlnew").value = urlnew ;
-	copynew();	
+	var url = document.getElementById("url");
+	var urlvalue = url.value;
+	var urlleft = urlvalue.substring(0,4);
+	if (urlleft == "http") {
+		var urlnewvalue = urlvalue.replace("http", "h🍁ttp");
+		var urlnew = document.getElementById("urlnew");
+		urlnew.value = urlnewvalue ;
+		urlnew.select();
+		urlnew.setSelectionRange(0, 99999); //for mobile devices
+		navigator.clipboard.writeText(urlnew.value);
+	} else {
+		alert("Please enter a news story link starting with http or https");
+		url.focus();
+	}
 };
 
-function copynew() {
-	var copynew = document.getElementById("urlnew");
-	copynew.select();
-	copynew.setSelectionRange(0, 99999); // For mobile devices
-	navigator.clipboard.writeText(copynew.value);
-}
 </script>
 </head>
 
@@ -37,15 +41,13 @@ Modify the news link to disable it. You can modify it yourself or use the follow
 <ol>
 <li>Insert a news story link in the first box.</li>
 <li>Click the Modify Link button. The tool inserts a maple leaf emoji 🍁 to disable the link and to highlight that this is an issue for Canadians.</li>
-<li>Click the Copy to Clipboard button and paste the modified link in Facebook. It will not generate a preview and it will not be blocked.</li>
+<li>Copy and paste the modified link in Facebook. It will not be blocked.</li>
 <li>Readers can copy and paste the edited link into a browser, remove the maple leaf, and then read the original news story.</li>
 </ol>
 
 <p><input type="url" name="url" id="url" placeholder="https://originalnewsstory.com" pattern="https://.*" size="300" required />
-<p><input id="butModify" type="button" value="Modify link" onclick="modifyurl();" />
-
+<p><input id="butModify" type="button" value="Modify Link" onclick="modifyurl();" />
 <p><input type="text" name="urlnew" id="urlnew" size="300" />
-<p><input id="butCopy" type="button" value="Copy to clipboard" onclick="copynew();" />
 
 <h2>Share a Secondary Link</h2>
 For now, people can still post links on other digital platforms, such as X (formerly Twitter). You can look up new stories with links on these platforms and share them on Facebook. These secondary links are not currently being blocked. Your readers can click through your Facebook link to the original news story link. It is unclear if these other platforms will respond to Bill C-18.
