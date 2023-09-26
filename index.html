@@ -2,68 +2,61 @@
 
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>How to Share News on Facebook in Canada</title>
+<title>Create a News Link that can be Shared on Facebook Canada</title>
+
 <script type="text/javascript">
-function modifyurl(){
+function createurl(){
 	var url = document.getElementById("url");
 	var urlvalue = url.value;
 	var urlleft = urlvalue.substring(0,4);
+	var search = "https://www.bing.com/search?q=";
+	var count = "&count=1";
 	if (urlleft == "http") {
-		var urlnewvalue = urlvalue.replace("http", "h🍁ttp");
-		var urlnew = document.getElementById("urlnew");
-		urlnew.value = urlnewvalue ;
-		urlnew.select();
-		urlnew.setSelectionRange(0, 99999); //for mobile devices
-		navigator.clipboard.writeText(urlnew.value);
-	} else {
+		var url2 = search.concat(urlvalue);
+		url2 = url2.concat(count);
+
+		var urlshare = document.getElementById("urlshare");
+		urlshare.value = url2;
+		copyurlshare();
+	}
+	else {
 		alert("Please enter a news story link starting with http or https");
 		url.focus();
 	}
 };
+
+function viewurlshare(){
+	var urlshare = document.getElementById("urlshare");
+	var urlsharevalue = urlshare.value;
+	var urlshareleft = urlsharevalue.substring(0,4);
+	if (urlshareleft == "http") {	
+		window.location.href = urlsharevalue;
+	}
+}
+
+function copyurlshare(){
+	var urlshare = document.getElementById("urlshare");
+	var urlsharevalue = urlshare.value;
+	urlshare.select();
+	navigator.clipboard.writeText(urlsharevalue);
+}
 
 </script>
 </head>
 
 <body style="font-family: sans-serif">
 <img src="facebook.jpg" >
+<h1>Create a News Link that can be Shared on Facebook Canada</h1>
+<p>Insert a link to a news story you want to share on Facebook Canada. Click the 'Create Link' button. It creates a Bing search link that displays one result. Share the link on Facebook. The link will generate a Facebook preview for the Bing search result, which you can keep or delete. The link will not be blocked.
 
-<h1>How to Share News on Facebook in Canada</h1>
-Bill C-18, the Online News Act, compels technology companies to compensate news publishers for using their journalism. In response, Meta is ending access to news on its social media sites for Canadian users. Canadians who post a link to a news article – domestic or international – will find the post blocked. This response prevents access to vital journalism. 
+<p><input type="url" name="url" id="url" placeholder="https://originalnewsstory.com" pattern="https://.*" size="200" required />
+<p><input id="butCreate" type="button" value="Create Link" onclick="createurl();" />
+<p><input type="text" name="urlshare" id="urlshare" size="200" />
+<p><input id="butCopy" type="button" value="Copy Link" onclick="copyurlshare();" />
+<input id="butView" type="button" value="View Link" onclick="viewurlshare();" />
 
-<h1>Workarounds</h1>
-These workarounds allow Canadians to continue sharing news on Facebook.
-
-<h2>Share a Screenshot</h2>
-<p>Share a screenshot of a news story. A screenshot is an image, not a link, and will not be blocked. A screenshot of a news story will usually provide a picture and essential data to find the original story, such as title, author, and timestamp. 
-
-<h2>Share a Disabled Link</h2>
-Modify the news link to disable it. You can modify it yourself or use the following tool:
-<ol>
-<li>Insert a news story link in the first box.</li>
-<li>Click the Modify Link button. The tool inserts a maple leaf emoji 🍁 to disable the link and to highlight that this is an issue for Canadians.</li>
-<li>Copy and paste the modified link in Facebook. (If Facebook generates a link preview delete it.) When you click Save the link will not be blocked.</li>
-<li>Readers can copy and paste the edited link into a browser, remove the maple leaf, and then read the original news story.</li>
-</ol>
-
-<p><input type="url" name="url" id="url" placeholder="https://originalnewsstory.com" pattern="https://.*" size="300" required />
-<p><input id="butModify" type="button" value="Modify Link" onclick="modifyurl();" />
-<p><input type="text" name="urlnew" id="urlnew" size="300" />
-
-<h2>Share a Secondary Link</h2>
-For now, people can still post links on other digital platforms, such as X (formerly Twitter). You can look up new stories with links on these platforms and share them on Facebook. These secondary links are not currently being blocked. Your readers can click through your Facebook link to the original news story link. It is unclear if these other platforms will respond to Bill C-18.
-
-<h1>Other Options</h1>
-<h2>Copy-Paste the Story Text</h2>
-Some news publishers allow readers to copy-paste the full text of a story. Look for the licensing agreement. There is a risk that a malicious user could change the original text. Even if the text was transferred accurately, readers will not get updates from the news source.
-
-<h2>Virtual Private Network (VPN)</h2>
-A VPN can make a user appear to be in another country than Canada. Initial tests indicate that Facebook is using additional methods to detect the user’s location and block links.  
-
-<h2>Apps, Websites, Email</h2>
-People can continue to use traditional online methods of sharing news, such as news apps and websites, and email. It is a cause to reflect. Social media was created to improve the user experience of the web, to make it easy for everyone to participate. Blocking news is a step backward.
-
-<h1>More Information</h1>
-<p>The code is shared under a GNU General Public License v3.0 at <a href="https://github.com/johnmiedema/sharenewscanada">GitHub</a>
+<h2>More Information</h2>
+<p>This work is shared to the public domain <a href="https://creativecommons.org/publicdomain/zero/1.0/">(CCO 1.0)</a> at <a href="https://github.com/johnmiedema/sharenewscanada">GitHub</a>
 <p><a href="http://johnmiedema.art/">johnmiedema.art</a>
 </body>
 </html>
