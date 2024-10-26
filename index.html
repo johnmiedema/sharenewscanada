@@ -2,18 +2,31 @@
 
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Create a News Link that can be Shared on Facebook Canada</title>
+<title>Share News on Facebook Canada</title>
 
 <script type="text/javascript">
 function createurl(){
+	
 	var url = document.getElementById("url");
 	var urlvalue = url.value;
 	var urlleft = urlvalue.substring(0,4);
-	var search = "https://www.bing.com/search?q=";
-	var count = "&count=1";
+	var engine = document.getElementById("engine").value;
+
+	var search = "";
+	var suffix = "";
+ 
 	if (urlleft == "http") {
+
+		if (engine == "bing") {
+			search = "https://www.bing.com/search?q=";
+			suffix = "&count=1";
+		} else {
+			search = "https://www.google.com/search?q=";
+			suffix = "&btnI";
+		}
+
 		var url2 = search.concat(urlvalue);
-		url2 = url2.concat(count);
+		url2 = url2.concat(suffix);
 
 		var urlshare = document.getElementById("urlshare");
 		urlshare.value = url2;
@@ -44,18 +57,23 @@ function copyurlshare(){
 </script>
 </head>
 
-<body style="font-family: sans-serif;max-width:1000px">
-<h1>Create a News Link that can be Shared on Facebook Canada</h1>
+<body>
+<h1>Share News on Facebook Canada</h1>
 <ol>
 <li>Insert a link to a news story you want to share on Facebook Canada.</li>
-<li>Click the Create Link button. The tool generates a Bing search link featuring just one result, your link to the news story.</li>
-<li>Copy and share the generated link on Facebook. (You may wish to delete the Facebook preview for the Bing search page.)</li>
+<li>Click the Transform Link button. The tool generates a Bing search link featuring just one result, your link to the news story.</li>
+<li>Click the View Link button to confirm the result. Bing sometimes delays indexing a page, so you can try the Google search option. 
+<li>Copy and share the generated link on Facebook. You may wish to cancel the Facebook preview.</li>
 </ol>
-<p><input type="url" name="url" id="url" placeholder="https://newsstory.com" pattern="https://.*" size="100" required />
-<p><input id="butCreate" type="button" value="Create Link" onclick="createurl();" />
-<p><input type="text" name="urlshare" id="urlshare" size="100" />
-<p><input id="butCopy" type="button" value="Copy Link" onclick="copyurlshare();" />
-<input id="butView" type="button" value="View Link" onclick="viewurlshare();" />
+<p><input type="url" name="url" id="url" placeholder="https://newsstory.com" pattern="https://.*" required />
+<p><select name="engine" id="engine">
+<option value="bing">Bing (recommended)</option>
+<option value="google">Google's Feeling Lucky Search (beta)</option>
+</select>
+<p><input id="butCreate" type="button" value="Transform Link" onclick="createurl();" />
+<p><input type="text" name="urlshare" id="urlshare" />
+<p><input id="butView" type="button" value="View Link" onclick="viewurlshare();" />
+<input id="butCopy" type="button" value="Copy Link" onclick="copyurlshare();" />
 
 <h2>More Information</h2>
 <p>This work is shared to the public domain <a href="https://creativecommons.org/publicdomain/zero/1.0/">(CCO 1.0)</a> at <a href="https://github.com/johnmiedema/sharenewscanada">GitHub</a>
